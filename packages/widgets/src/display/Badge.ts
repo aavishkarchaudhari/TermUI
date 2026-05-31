@@ -2,7 +2,7 @@
 // @termuijs/widgets — Badge widget
 // ─────────────────────────────────────────────────────
 
-import { type Screen, type Style, type Color, styleToCellAttrs, stringWidth, caps } from '@termuijs/core';
+import { type Screen, type Style, type Color, stringWidth, caps } from '@termuijs/core';
 import { Widget } from '../base/Widget.js';
 
 export type BadgeVariant = 'info' | 'success' | 'warning' | 'error' | 'neutral';
