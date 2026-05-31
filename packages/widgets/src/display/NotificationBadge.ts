@@ -1,6 +1,4 @@
-// ─────────────────────────────────────────────────────
-// @termuijs/widgets — NotificationBadge widget
-// ─────────────────────────────────────────────────────
+// @termuijs/widgets - NotificationBadge widget
 
 import { type Screen, type Style, type Color, stringWidth } from '@termuijs/core';
 import { Widget } from '../base/Widget.js';
@@ -14,14 +12,14 @@ export interface NotificationBadgeOptions {
     position?: BadgePosition;
 }
 
-/** Badge background — red, the universal notification color. */
+/** Badge background: red, the universal notification color. */
 const BADGE_BG: Color = { type: 'named', name: 'red' };
 
-/** Badge foreground — white for contrast on red. */
+/** Badge foreground: white for contrast on red. */
 const BADGE_FG: Color = { type: 'named', name: 'white' };
 
 /**
- * NotificationBadge — a small count label rendered at a corner position.
+ * NotificationBadge - a small count label rendered at a corner position.
  *
  * Used for unread counts, alert indicators, and notification overlays.
  * Renders the count as a compact colored label at one of four corner positions.

@@ -1,6 +1,4 @@
-// ─────────────────────────────────────────────────────
-// @termuijs/widgets — Tests for NotificationBadge widget
-// ─────────────────────────────────────────────────────
+// @termuijs/widgets - Tests for NotificationBadge widget
 
 import { describe, it, expect } from 'vitest';
 import { NotificationBadge } from './NotificationBadge.js';
@@ -26,7 +24,6 @@ function rowText(screen: Screen, row: number): string {
 }
 
 describe('NotificationBadge', () => {
-    // ── 1. Zero count hides badge ─────────────────────────────────────────
     it('renders nothing when count is 0', () => {
         const { screen } = renderBadge({ count: 0 });
         // All cells should remain at defaults (space char, no red bg)
@@ -42,7 +39,6 @@ describe('NotificationBadge', () => {
         }
     });
 
-    // ── 2. Count renders correctly ────────────────────────────────────────
     it('renders the count number at the specified position', () => {
         const { screen } = renderBadge({ count: 5, position: 'top-right' });
         // Count "5" should appear somewhere on the top row
@@ -64,7 +60,6 @@ describe('NotificationBadge', () => {
         expect(topRow).toContain('42');
     });
 
-    // ── 3. 99+ truncation ─────────────────────────────────────────────────
     it('shows 99+ when count exceeds 99', () => {
         const { screen } = renderBadge({ count: 100, position: 'top-left' });
         const topRow = rowText(screen, 0);
@@ -85,7 +80,6 @@ describe('NotificationBadge', () => {
         expect(topRow).not.toContain('99+');
     });
 
-    // ── 4. Position variants ──────────────────────────────────────────────
     it('renders at top-right corner', () => {
         const { screen } = renderBadge({ count: 7, position: 'top-right' }, {}, 20, 5);
         // "7" is 1 char wide, should appear at column 19 (width - 1)
@@ -113,7 +107,6 @@ describe('NotificationBadge', () => {
         expect(screen.back[4][0].bg).toEqual({ type: 'named', name: 'red' });
     });
 
-    // ── 5. Setters call markDirty ─────────────────────────────────────────
     it('setCount marks widget dirty', () => {
         const badge = new NotificationBadge({ count: 1 });
         badge.clearDirty();
@@ -130,7 +123,6 @@ describe('NotificationBadge', () => {
         expect(badge.getPosition()).toBe('bottom-left');
     });
 
-    // ── 6. Edge cases ─────────────────────────────────────────────────────
     it('handles zero-size rect without error', () => {
         expect(() => renderBadge({ count: 5 }, {}, 0, 0)).not.toThrow();
     });
