@@ -96,13 +96,16 @@ describe("Gradient Widget — Rendering & Colors", () => {
         widget.updateRect({ x: 0, y: 0, width: 20, height: 1 });
         widget.render(screen);
 
-        const mid = screen.back[0][1].fg as { type: string; r: number; g: number; b: number };
-        expect(mid.type).toBe('rgb');
-        // Midpoint of red->blue: r should be between 0 and 255, b should be between 0 and 255
-        expect(mid.r).toBeGreaterThan(0);
-        expect(mid.r).toBeLessThan(255);
-        expect(mid.b).toBeGreaterThan(0);
-        expect(mid.b).toBeLessThan(255);
+        const mid = screen.back[0][1].fg;
+        expect(mid).toBeDefined();
+        expect(mid?.type).toBe('rgb');
+        if (mid?.type === 'rgb') {
+            // Midpoint of red->blue: r should be between 0 and 255, b should be between 0 and 255
+            expect(mid.r).toBeGreaterThan(0);
+            expect(mid.r).toBeLessThan(255);
+            expect(mid.b).toBeGreaterThan(0);
+            expect(mid.b).toBeLessThan(255);
+        }
     });
 
     it('assigns start color to a single character', () => {

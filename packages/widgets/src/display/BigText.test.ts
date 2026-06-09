@@ -122,7 +122,7 @@ describe('BigText', () => {
     });
 
     it('applies custom color to rendered cells', () => {
-        const color = { type: 'named' as const, name: 'red' as const };
+        const color: import('@termuijs/core').Color = { type: 'named', name: 'red' };
         const widget = new BigText('A', {}, { color });
         const screen = new Screen(10, 10);
         widget.updateRect({ x: 0, y: 0, width: 10, height: 10 });
