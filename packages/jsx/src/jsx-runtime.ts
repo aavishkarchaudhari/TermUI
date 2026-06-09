@@ -8,6 +8,7 @@
 
 export { jsx, jsxs } from './createElement.js';
 export { Fragment } from './vnode.js';
+import type { Style } from '@termuijs/core';
 
 // ── JSX Intrinsic Element Types ───────────────────────
 // Consumed by TypeScript's automatic JSX transform to
@@ -42,6 +43,7 @@ export namespace JSX {
             height?: number | string;
             padding?: number;
             margin?: number;
+            style?: Partial<Style>;
         };
         row: {
             children?: any;
